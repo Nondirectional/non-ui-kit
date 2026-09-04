@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>non-starter</title>
+    <script>
+      // 防白闪：在应用 bundle 加载前按存储的主题设置给 <html> 挂 .dark 类。
+      // key 与 useTheme 默认 key（'theme'）一致；改过 key 的应用这里同步改。
+      ;(function () {
+        try {
+          var t = localStorage.getItem('theme')
+          var dark =
+            t === 'dark' || (!t || t === 'system') && matchMedia('(prefers-color-scheme: dark)').matches
+          document.documentElement.classList.toggle('dark', dark)
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

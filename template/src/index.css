@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+/* @non/ui 语义令牌 + @custom-variant dark + 组件配套全局 CSS（弹层动画/小屏 sheet） */
+@import '@non/ui/tokens.css';
+/* Tailwind v4 必须显式扫描包内源码类名，遗漏则组件样式丢失（路径相对本文件） */
+@source '../node_modules/@non/ui/src';
+
+/*
+ * 应用基础样式：tokens.css 刻意不含这一层（应用层决策），按需修改。
+ * body 基准 14px / line-height 1.55 是本设计系统的排版约定。
+ */
+@layer base {
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+}
