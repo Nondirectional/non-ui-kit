@@ -38,6 +38,8 @@ pnpm add @non/ui@github:Nondirectional/non-ui-kit#v0.1.0
          '@radix-ui/react-popover',
          '@radix-ui/react-select',
          '@radix-ui/react-slot',
+         '@radix-ui/react-switch',
+         '@radix-ui/react-tabs',
          '@radix-ui/react-tooltip',
          'react-remove-scroll',
        ],
@@ -77,6 +79,11 @@ pnpm add @non/ui@github:Nondirectional/non-ui-kit#v0.1.0
 | `ConfirmProvider` / `useConfirm` | 全局确认弹窗，`await confirm({ title, danger? }) → boolean` |
 | `ToastProvider` / `useToast` | 轻量 toast（`error`/`success`，3.5s 自动消失，z-[60]） |
 | `Dot` | 8px 状态圆点徽标（`inline-block`，带 sr-only 标签） |
+| `Card` / `CardHeader` … | 面板容器套件：KPI 卡与面板统一皮肤，`variant="highlight"` accent 左边框强调 |
+| `Tabs` / `TabsList` … | Radix Tabs 薄封装（受控 `value`，分段控件形态，图表粒度切换） |
+| `Table` / `TableHead` … | 语义表格封装 + 受控表头排序（`sort` + `onSortChange`：同列翻转、新列默认降序） |
+| `Badge` | 语义色胶囊徽章（5 变体 soft 底查表，`dot` 前置状态点） |
+| `Switch` | Radix Switch 薄封装（受控 `checked` + `onCheckedChange`，设置项开关） |
 | `useTheme(key?)` / `setTheme` | 主题三态（light/dark/system）读写 `localStorage[key]` + 切 `<html>.dark`；key 默认 `'theme'`，多应用同域时传独立 key |
 | `Icon*`（30 个） | 线性描边图标（stroke 1.4 / currentColor，16px 默认） |
 | `cn` | 零依赖类名拼接（无 tailwind-merge：同名工具类胜者由样式表顺序决定，消费者只许追加布局类） |

@@ -23,6 +23,15 @@ export { DateTimePicker } from './components/ui/DateTimePicker'
 export { Tooltip, TooltipProvider } from './components/ui/Tooltip'
 export { Dot } from './components/ui/Dot'
 
+// 看板组件（0.2.0 起）：数据看板刚需件，API 同样受控优先、语义 token 取色
+export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './components/ui/Card'
+export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/Tabs'
+export { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from './components/ui/Table'
+export type { TableSort } from './components/ui/Table'
+export { Badge } from './components/ui/Badge'
+export type { BadgeVariant } from './components/ui/Badge'
+export { Switch } from './components/ui/Switch'
+
 // 全局 Provider（挂在应用根部）与对应 hook
 export { ConfirmProvider, useConfirm } from './components/ui/ConfirmProvider'
 export type { ConfirmOptions } from './components/ui/ConfirmProvider'

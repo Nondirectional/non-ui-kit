@@ -20,6 +20,8 @@ export default defineConfig({
       '@radix-ui/react-popover',
       '@radix-ui/react-select',
       '@radix-ui/react-slot',
+      '@radix-ui/react-switch',
+      '@radix-ui/react-tabs',
       '@radix-ui/react-tooltip',
       'react-remove-scroll',
     ],
