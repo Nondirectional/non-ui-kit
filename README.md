@@ -92,6 +92,14 @@ pnpm add @non/ui@github:Nondirectional/non-ui-kit#v0.1.0
 `ConfirmProvider`、`ToastProvider`、`TooltipProvider` 挂在应用根部；`TooltipProvider`
 缺失时 Tooltip 直接抛错（Radix 要求）。
 
+## LLM 友好索引（llms.txt）
+
+仓库根的 [llms.txt](llms.txt) 是给 AI 助手的组件索引（reka-ui llms.txt 形态的本地变体）：
+每个导出一条「源文件链接 + 一句话 API 摘要」，指向源码 JSDoc 按需精读——本库源码注释
+即 API 文档，不做二次搬运的独立文档站。配套 `src/test/llms.test.ts` 双向锁：索引死链、
+或 `src/index.ts` 新增导出未登记，`pnpm test` 直接红。包入口 `@non/ui/llms.txt` 已在
+exports 暴露，消费方 agent 可直接在 node_modules 内发现。
+
 ## 升级
 
 ```bash

@@ -1,0 +1,61 @@
+# @non/ui — 语义令牌 + 薄封装 React 组件库（源码直出，React 19 + TypeScript strict）
+
+> 从 work-dispatcher 沉淀的自用通用 UI 件：组件多为 Radix 薄封装，受控优先、
+> forwardRef、className 只允许追加布局类（无 tailwind-merge，变体走完整类串查表）。
+> 颜色只消费语义 token——tokens.css 是颜色字面量唯一允许出现处，明暗主题由
+> .dark 类切换 CSS 变量，组件零 dark: 分支。源码直出无构建产物（exports 指向
+> ./src/index.ts），消费方为 Vite：两处必配接线（optimizeDeps.exclude 成对
+> include + index.css @source 扫描包内类名）见 README。
+> 本文件是给 AI 助手的组件索引：按需打开下列源文件精读，JSDoc 即 API 文档；
+> 各组件同目录 *.test.tsx 是行为契约；本索引与 src/index.ts 导出面的同步由
+> src/test/llms.test.ts 测试锁定。
+
+## 组件
+
+### 表单
+
+[Button](src/components/ui/Button.tsx): 全部文本按钮，5 variant × 2 size 完整类串查表；loading 态内联 spinner；icon-only 按钮不走它
+[Input](src/components/ui/Input.tsx) / [Textarea](src/components/ui/Textarea.tsx): 原生 input/textarea 薄封装，forwardRef，className 只追加布局类
+[Select](src/components/ui/Select.tsx): Radix Select 封装（含 SelectItem）：受控 value、''=未选、width full/auto、searchable 开启 Popover + 自研可过滤列表（该模式 SelectItem children 须纯文本）
+[MultiSelect](src/components/ui/MultiSelect.tsx): Radix DropdownMenu 多选：options + value: string[]、预览截断、searchable
+[DatePicker](src/components/ui/DatePicker.tsx): 自建周一起始月历（Radix Popover 弹层），value 'yyyy-MM-dd'；同文件导出独立 CalendarPanel 与 WEEKDAY_LABELS；clearable / max
+[DateTimePicker](src/components/ui/DateTimePicker.tsx): 月历 + 时/分输入行，value 'yyyy-MM-ddTHH:mm'，缺省时刻 09:00
+
+### 看板（0.2.0 起，数据看板场景）
+
+[Card](src/components/ui/Card.tsx): KPI 卡/面板套件（CardHeader / CardTitle / CardDescription / CardContent / CardFooter）；variant="highlight" 为 accent 左边框强调；基类无内距，简单 KPI 卡直接 className="p-4"
+[Tabs](src/components/ui/Tabs.tsx): Radix Tabs 薄封装（TabsList / TabsTrigger / TabsContent）：受控 value/onValueChange；分段控件形态（bg-sidebar 内凹容器，选中 accent 实心胶囊）；图表粒度切换（小时/天/周/月）
+[Table](src/components/ui/Table.tsx): 原生语义表格套件（TableHeader / TableBody / TableRow / TableHead / TableCell）；受控表头排序 sort/onSortChange——同列点击翻转、新列默认降序、initialDirection 可改升序起始；th 带 aria-sort 与 chevron 方向指示；数据重排由消费方完成
+[Badge](src/components/ui/Badge.tsx): 语义色胶囊徽标：variant neutral/accent/success/warning/danger（soft 底查表）；dot 前置状态圆点（bg-current 随字色）；模型名/状态标记
+[Switch](src/components/ui/Switch.tsx): Radix Switch 薄封装：受控 checked/onCheckedChange；36×20 轨道选中 accent 实心；设置项开关
+
+### 反馈与浮层
+
+[AppDialog](src/components/ui/Dialog.tsx): 统一对话框壳：overlay + 面板 + 标题行 + 关闭钮 + footer 槽位，width="sm"
+[Tooltip](src/components/ui/Tooltip.tsx): Radix Tooltip 反色气泡（bg-fg text-bg）；必须先挂 TooltipProvider（缺失直接抛错）
+[Dot](src/components/ui/Dot.tsx): 8px 危险色状态圆点；无障碍语义由 sr-only 文案承载
+
+### 全局 Provider（挂应用根部）
+
+[ConfirmProvider](src/components/ui/ConfirmProvider.tsx): 全局确认弹窗；useConfirm() 返回 await confirm({ title, danger? }) → boolean
+[ToastProvider](src/components/ui/ToastProvider.tsx): 轻量 toast；useToast() 的 error/success 两级，3.5s 自动消失
+
+## 图标
+
+[icons](src/icons.tsx): 30 个线性描边图标（stroke 1.4 / currentColor / 默认 16px，size prop 可调，均 aria-hidden）：
+IconBoard、IconUsers、IconInbox、IconFeedback、IconMessage、IconChart、IconDeploy、IconPipeline、IconChat、IconPlus、IconX、IconSliders、IconDept、IconUser、IconSun、IconMoon、IconCheck、IconChevronLeft、IconChevronDown、IconCalendar、IconChevronRight、IconKey、IconLogout、IconMore、IconBell、IconDownload、IconSparkle、IconBook、IconClock、IconShield
+
+## 主题
+
+[useTheme](src/theme/useTheme.ts): useTheme(key?) / setTheme 三态（light/dark/system）读写 localStorage[key]（默认 'theme'，多应用同域传独立 key）并切换 html 的 .dark 类
+
+## 工具函数
+
+[日期工具](src/utils/date.ts): 本地时区纯函数——parseDateInput / buildMonthMatrix / todayInput / addDaysInput / presetRange 等；日期形状 'yyyy-MM-dd' / 'yyyy-MM-ddTHH:mm'
+[cn](src/cn.ts): 零依赖类名拼接。关键约定：无 tailwind-merge，同名工具类胜者由样式表顺序决定——组件变体必须完整类串查表（一次只取一条），消费方只许追加布局类（w-* / mt-* / flex-1 等）
+
+## 规约与接线（改组件前必读）
+
+[tokens.css](src/tokens.css): 全部语义 token 与明暗两套取值；@custom-variant dark（类式暗色）+ @theme inline 注册 + 弹层动画/小屏 bottom sheet 配套全局 CSS；组件内禁止颜色字面量与 dark: 分支
+[README](README.md): 消费方两处必配（vite optimizeDeps.exclude 成对 include；index.css @import tokens.css + @source 扫描）、file: 依赖刷新方式与实战踩坑记录
+[CHANGELOG](CHANGELOG.md): 版本记录；git tag 语义化分发，不发 npm registry
