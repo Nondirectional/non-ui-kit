@@ -2,6 +2,19 @@
 
 本包遵循语义化版本；通过 git tag（`vX.Y.Z`）分发，不发 npm registry。
 
+## 0.2.1（未发布）
+
+文档级增量，无组件变更：
+
+- 新增 LLM 友好索引 `llms.txt`（仓库根，reka-ui llms.txt 索引层的本地变体）：
+  引言（定位与关键纪律）+ 分区块索引（表单 / 看板 / 反馈与浮层 / Provider /
+  图标 / 主题 / 工具函数 / 规约），每条「源文件链接 + 一句话 API 摘要」，
+  直接链接源码 JSDoc，不做二次搬运的文档层
+- `src/test/llms.test.ts` 双向锁：索引死链、或 `src/index.ts` 新增导出未
+  登记即 `pnpm test` 失败；文件读取走 `import.meta.glob`（src 随包直出会被
+  消费方 tsc 检查，不引入 node 类型依赖）
+- `exports` 增 `"./llms.txt"`：消费方 AI agent 可在 node_modules 内直接发现
+
 ## 0.2.0（未发布）
 
 数据看板（non-tokens 筹备）场景增量：5 个新组件，纯增量无破坏性变更；

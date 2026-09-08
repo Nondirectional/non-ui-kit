@@ -104,7 +104,7 @@ exports 暴露，消费方 agent 可直接在 node_modules 内发现。
 
 ```bash
 # 方式一：改 package.json 里的 tag 号后重装
-pnpm add @non/ui@github:Nondirectional/non-ui-kit#v0.2.0
+pnpm add @non/ui@github:Nondirectional/non-ui-kit#v0.2.1
 
 # 方式二：tag 范围内升级
 pnpm update @non/ui
