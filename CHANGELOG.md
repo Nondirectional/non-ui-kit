@@ -2,7 +2,7 @@
 
 本包遵循语义化版本；通过 git tag（`vX.Y.Z`）分发，不发 npm registry。
 
-## 0.2.1（未发布）
+## 0.2.1（2026-09-08）
 
 文档级增量，无组件变更：
 
@@ -15,7 +15,7 @@
   消费方 tsc 检查，不引入 node 类型依赖）
 - `exports` 增 `"./llms.txt"`：消费方 AI agent 可在 node_modules 内直接发现
 
-## 0.2.0（未发布）
+## 0.2.0（2026-09-08）
 
 数据看板（non-tokens 筹备）场景增量：5 个新组件，纯增量无破坏性变更；
 全部语义 token 取色（本轮未新增 token），明暗双主题免 `dark:` 分支。
@@ -39,7 +39,7 @@
 - 测试：每组件共置 Vitest；新增 `src/test/theme.tsx` 的 `renderInTheme`
   helper，以「暗色容器下行为与类串同亮色逐字一致」断言锁定零 `dark:` 分支契约
 
-## 0.1.0（未发布）
+## 0.1.0（2026-09-04）
 
 首个版本：从 work-dispatcher `frontend/src` 抽取。
 
