@@ -4,3 +4,8 @@ dist/
 .DS_Store
 template/node_modules/
 template/dist/
+.codegraph/
+.trellis/
+.zcode/
+.idea/
+AGENTS.md
