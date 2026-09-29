@@ -44,8 +44,8 @@
 
 ## 图标
 
-[icons](src/icons.tsx): 32 个线性描边图标（stroke 1.4 / currentColor / 默认 16px，size prop 可调，均 aria-hidden）：
-IconBoard、IconUsers、IconInbox、IconFeedback、IconMessage、IconChart、IconDeploy、IconPipeline、IconChat、IconPlus、IconX、IconSliders、IconDept、IconUser、IconSun、IconMoon、IconCheck、IconChevronLeft、IconChevronDown、IconCalendar、IconChevronRight、IconKey、IconLogout、IconMore、IconBell、IconDownload、IconSparkle、IconBook、IconClock、IconShield、IconInfo、IconAlertTriangle
+[icons](src/icons.tsx): 33 个线性描边图标（stroke 1.4 / currentColor / 默认 16px，size prop 可调，均 aria-hidden）：
+IconBoard、IconUsers、IconInbox、IconFeedback、IconMessage、IconChart、IconDeploy、IconPipeline、IconChat、IconPlus、IconX、IconSliders、IconDept、IconUser、IconSun、IconMoon、IconCheck、IconChevronLeft、IconChevronDown、IconCalendar、IconChevronRight、IconKey、IconLogout、IconMore、IconBell、IconDownload、IconSparkle、IconBook、IconClock、IconShield、IconInfo、IconAlertTriangle、IconMonitor
 
 ## 主题
 

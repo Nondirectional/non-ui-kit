@@ -142,6 +142,14 @@ export const IconMoon = icon(
   <path d="M13.2 9.7A5.9 5.9 0 0 1 6.3 2.8a5.9 5.9 0 1 0 6.9 6.9z" />,
 )
 
+/** 显示器（主题"跟随系统"指示，与 IconSun / IconMoon 构成三态组） */
+export const IconMonitor = icon(
+  <>
+    <rect x="1.8" y="2.6" width="12.4" height="8.8" rx="1.3" />
+    <path d="M8 11.4v2.2M5.6 13.6h4.8" />
+  </>,
+)
+
 export const IconCheck = icon(<path d="M3.5 8.6l2.9 2.9 6.1-6.9" />)
 
 export const IconChevronLeft = icon(<path d="M9.8 3.8 5.6 8l4.2 4.2" />)

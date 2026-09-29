@@ -42,7 +42,7 @@ export type { ConfirmOptions } from './components/ui/ConfirmProvider'
 export { ToastProvider, useToast } from './components/ui/ToastProvider'
 export type { ToastApi } from './components/ui/ToastProvider'
 
-// 图标（32 个线性描边图标，stroke 1.4 / currentColor）
+// 图标（33 个线性描边图标，stroke 1.4 / currentColor）
 export * from './icons'
 
 // 主题
