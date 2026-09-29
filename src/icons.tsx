@@ -1,4 +1,4 @@
-import { SVGProps } from 'react'
+import type { SVGProps } from 'react'
 
 interface IconProps extends SVGProps<SVGSVGElement> {
   size?: number
@@ -224,4 +224,20 @@ export const IconClock = icon(
 /** 审计日志导航：盾牌语义（操作留痕与安全审计） */
 export const IconShield = icon(
   <path d="M8 1.8l4.6 1.7v3.7c0 3-1.9 5.4-4.6 6.5-2.7-1.1-4.6-3.5-4.6-6.5V3.5z" />,
+)
+
+/** 中性信息提示：圆圈 i（toast info / Banner info） */
+export const IconInfo = icon(
+  <>
+    <circle cx="8" cy="8" r="5.6" />
+    <path d="M8 4.9h.01M8 7.4v3.8" />
+  </>,
+)
+
+/** 警示提示：三角叹号（toast warning / Banner warning） */
+export const IconAlertTriangle = icon(
+  <>
+    <path d="M8 2.4l5.9 10.7H2.1z" />
+    <path d="M8 6.4v3.2M8 11.7h.01" />
+  </>,
 )

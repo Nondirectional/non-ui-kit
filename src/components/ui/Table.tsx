@@ -1,11 +1,5 @@
-import {
-  createContext,
-  forwardRef,
-  HTMLAttributes,
-  TdHTMLAttributes,
-  ThHTMLAttributes,
-  useContext,
-} from 'react'
+import { createContext, forwardRef, useContext } from 'react'
+import type { HTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from 'react'
 import { IconChevronDown } from '../../icons'
 import { cn } from '../../cn'
 

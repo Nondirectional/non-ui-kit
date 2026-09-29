@@ -22,6 +22,10 @@ export { DatePicker, CalendarPanel, WEEKDAY_LABELS } from './components/ui/DateP
 export { DateTimePicker } from './components/ui/DateTimePicker'
 export { Tooltip, TooltipProvider } from './components/ui/Tooltip'
 export { Dot } from './components/ui/Dot'
+export { StatusDot } from './components/ui/StatusDot'
+export type { StatusDotState } from './components/ui/StatusDot'
+export { Banner } from './components/ui/Banner'
+export type { BannerTone } from './components/ui/Banner'
 
 // 看板组件（0.2.0 起）：数据看板刚需件，API 同样受控优先、语义 token 取色
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './components/ui/Card'
@@ -38,7 +42,7 @@ export type { ConfirmOptions } from './components/ui/ConfirmProvider'
 export { ToastProvider, useToast } from './components/ui/ToastProvider'
 export type { ToastApi } from './components/ui/ToastProvider'
 
-// 图标（30 个线性描边图标，stroke 1.4 / currentColor）
+// 图标（32 个线性描边图标，stroke 1.4 / currentColor）
 export * from './icons'
 
 // 主题

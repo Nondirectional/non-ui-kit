@@ -34,16 +34,18 @@
 [AppDialog](src/components/ui/Dialog.tsx): 统一对话框壳：overlay + 面板 + 标题行 + 关闭钮 + footer 槽位，width="sm"
 [Tooltip](src/components/ui/Tooltip.tsx): Radix Tooltip 反色气泡（bg-fg text-bg）；必须先挂 TooltipProvider（缺失直接抛错）
 [Dot](src/components/ui/Dot.tsx): 8px 危险色状态圆点；无障碍语义由 sr-only 文案承载
+[StatusDot](src/components/ui/StatusDot.tsx): 8px 三态状态指示点（连通性/健康度）：state on=实心 success / off=实心 fg-subtle / unknown=空心；sr-only 文案承载语义，悬浮提示由调用方外包 Tooltip
+[Banner](src/components/ui/Banner.tsx): inline 常驻提示条（页面/区块级）：tone info/warning/danger（soft 底 + 前置图标），warning/danger 走 role=alert；与 toast 的瞬时提示互补
 
 ### 全局 Provider（挂应用根部）
 
 [ConfirmProvider](src/components/ui/ConfirmProvider.tsx): 全局确认弹窗；useConfirm() 返回 await confirm({ title, danger? }) → boolean
-[ToastProvider](src/components/ui/ToastProvider.tsx): 轻量 toast；useToast() 的 error/success 两级，3.5s 自动消失
+[ToastProvider](src/components/ui/ToastProvider.tsx): 轻量 toast；useToast() 的 error/success/info/warning 四级，3.5s 自动消失，点击条目立即关闭
 
 ## 图标
 
-[icons](src/icons.tsx): 30 个线性描边图标（stroke 1.4 / currentColor / 默认 16px，size prop 可调，均 aria-hidden）：
-IconBoard、IconUsers、IconInbox、IconFeedback、IconMessage、IconChart、IconDeploy、IconPipeline、IconChat、IconPlus、IconX、IconSliders、IconDept、IconUser、IconSun、IconMoon、IconCheck、IconChevronLeft、IconChevronDown、IconCalendar、IconChevronRight、IconKey、IconLogout、IconMore、IconBell、IconDownload、IconSparkle、IconBook、IconClock、IconShield
+[icons](src/icons.tsx): 32 个线性描边图标（stroke 1.4 / currentColor / 默认 16px，size prop 可调，均 aria-hidden）：
+IconBoard、IconUsers、IconInbox、IconFeedback、IconMessage、IconChart、IconDeploy、IconPipeline、IconChat、IconPlus、IconX、IconSliders、IconDept、IconUser、IconSun、IconMoon、IconCheck、IconChevronLeft、IconChevronDown、IconCalendar、IconChevronRight、IconKey、IconLogout、IconMore、IconBell、IconDownload、IconSparkle、IconBook、IconClock、IconShield、IconInfo、IconAlertTriangle
 
 ## 主题
 

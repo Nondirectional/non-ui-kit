@@ -2,6 +2,24 @@
 
 本包遵循语义化版本；通过 git tag（`vX.Y.Z`）分发，不发 npm registry。
 
+## 0.2.2（2026-09-29）
+
+tunnl 桌面壳接入场景增量：2 个新组件 + Toast 扩级，纯增量无破坏性变更；
+全部语义 token 取色，明暗双主题零 `dark:` 分支。
+
+- `StatusDot`：8px 三态状态指示点（连通性/健康度）——`state` on=实心
+  success / off=实心 fg-subtle / unknown=空心描边；sr-only 文案承载语义
+  （状态不单靠颜色/形态区分），悬浮提示由调用方外包 Tooltip。与 `Dot`
+  （危险红点，待办提示）互补，不替代
+- `Banner`：inline 常驻提示条（页面/区块级，与 toast 瞬时性互补）——
+  `tone` info（中性 surface-hover）/ warning / danger（soft 底 + 前置图标），
+  warning/danger 走 role=alert、info 走 status
+- `ToastProvider` 扩级：`useToast()` 新增 `info`（role=status，fg-subtle
+  中性描边 + IconInfo）与 `warning`（role=alert，warning 描边 +
+  IconAlertTriangle）；条目点击立即关闭（容器 pointer-events-none，
+  条目 pointer-events-auto）
+- 新增图标 `IconInfo` / `IconAlertTriangle`（32 个）
+
 ## 0.2.1（2026-09-08）
 
 文档级增量，无组件变更：

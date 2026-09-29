@@ -1,4 +1,5 @@
-import { forwardRef, TextareaHTMLAttributes } from 'react'
+import { forwardRef } from 'react'
+import type { TextareaHTMLAttributes } from 'react'
 import { cn } from '../../cn'
 
 /** 文本域基础类串：同 Input + resize-none leading-relaxed；min-h 等由消费者按场景追加。 */

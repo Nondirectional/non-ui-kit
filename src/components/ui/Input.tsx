@@ -1,4 +1,5 @@
-import { forwardRef, InputHTMLAttributes } from 'react'
+import { forwardRef } from 'react'
+import type { InputHTMLAttributes } from 'react'
 import { cn } from '../../cn'
 
 /** 输入框基础类串（design §2.3）：全仓 input 样式的单一来源，消费者只追加布局类。 */
