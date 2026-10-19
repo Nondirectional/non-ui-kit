@@ -2,6 +2,14 @@
 
 本包遵循语义化版本；通过 git tag（`vX.Y.Z`）分发，不发 npm registry。
 
+## 0.2.4（2026-10-19）
+
+表单增量（动态表单 radio 场景）：1 个新组件，纯增量无破坏性变更。
+
+- `RadioGroup` / `RadioGroupItem`：Radix RadioGroup 薄封装——受控 value +
+  onValueChange（radio 语义：点击已选项不触发）、16px 圆圈选中 accent 实心圆点、
+  默认纵向堆叠可 className 覆盖；选项行（label 联动）由消费方组合
+
 ## 0.2.3（2026-09-29）
 
 单图标增量（tunnl 主题切换）：无组件变更。

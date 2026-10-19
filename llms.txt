@@ -18,6 +18,7 @@
 [Input](src/components/ui/Input.tsx) / [Textarea](src/components/ui/Textarea.tsx): 原生 input/textarea 薄封装，forwardRef，className 只追加布局类
 [Select](src/components/ui/Select.tsx): Radix Select 封装（含 SelectItem）：受控 value、''=未选、width full/auto、searchable 开启 Popover + 自研可过滤列表（该模式 SelectItem children 须纯文本）
 [MultiSelect](src/components/ui/MultiSelect.tsx): Radix DropdownMenu 多选：options + value: string[]、预览截断、searchable
+[RadioGroup](src/components/ui/RadioGroup.tsx) / RadioGroupItem: Radix RadioGroup 封装：受控 value + onValueChange（点击已选项不触发）、16px 圆圈选中 accent 圆点、默认纵向堆叠
 [DatePicker](src/components/ui/DatePicker.tsx): 自建周一起始月历（Radix Popover 弹层），value 'yyyy-MM-dd'；同文件导出独立 CalendarPanel 与 WEEKDAY_LABELS；clearable / max
 [DateTimePicker](src/components/ui/DateTimePicker.tsx): 月历 + 时/分输入行，value 'yyyy-MM-ddTHH:mm'，缺省时刻 09:00
 
