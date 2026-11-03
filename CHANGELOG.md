@@ -2,6 +2,15 @@
 
 本包遵循语义化版本；通过 git tag（`vX.Y.Z`）分发，不发 npm registry。
 
+## 0.2.5（2026-11-03）
+
+表单增量（动态表单 checkbox 场景）：1 个新组件，纯增量无破坏性变更。
+
+- `Checkbox`：Radix Checkbox 薄封装——受控 checked + onCheckedChange 直接沿用
+  Radix 原生签名（含 `'indeterminate'`）；16px 方块、4px 圆角（与
+  `RadioGroupItem` 尺寸对齐），选中/半选 accent 实心 + accent-fg 勾/横线；
+  label 由消费方以 `label[htmlFor]` 组合，kit 只提供控件本体
+
 ## 0.2.4（2026-10-19）
 
 表单增量（动态表单 radio 场景）：1 个新组件，纯增量无破坏性变更。

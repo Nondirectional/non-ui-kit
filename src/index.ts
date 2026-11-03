@@ -36,6 +36,7 @@ export type { TableSort } from './components/ui/Table'
 export { Badge } from './components/ui/Badge'
 export type { BadgeVariant } from './components/ui/Badge'
 export { Switch } from './components/ui/Switch'
+export { Checkbox } from './components/ui/Checkbox'
 
 // 全局 Provider（挂在应用根部）与对应 hook
 export { ConfirmProvider, useConfirm } from './components/ui/ConfirmProvider'
