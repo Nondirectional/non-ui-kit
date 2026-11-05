@@ -19,6 +19,8 @@ interface DatePickerProps {
   clearable?: boolean
   /** 可选最大日期 'yyyy-MM-dd'：之后的日期格禁用（工时/日报不允许未来日） */
   max?: string
+  /** 可选最小日期 'yyyy-MM-dd'：之前的日期格禁用（生效日等不允许过去日） */
+  min?: string
   /** 无可见 label 场景的触发器可访问名 */
   'aria-label'?: string
 }
@@ -49,6 +51,8 @@ interface CalendarPanelProps {
   initialMonth?: { y: number; m: number }
   /** 可选最大日期 'yyyy-MM-dd'，之后禁选 */
   max?: string
+  /** 可选最小日期 'yyyy-MM-dd'，之前禁选 */
+  min?: string
 }
 
 function defaultViewMonth(value: string): { y: number; m: number } {
@@ -69,6 +73,7 @@ export function CalendarPanel({
   showToday = true,
   initialMonth,
   max,
+  min,
 }: CalendarPanelProps) {
   const [view, setView] = useState(() => initialMonth ?? defaultViewMonth(value))
   const weeks = buildMonthMatrix(view.y, view.m)
@@ -113,13 +118,14 @@ export function CalendarPanel({
           const selected = iso === value
           const isToday = iso === today
           const beyondMax = max != null && iso > max
+          const beforeMin = min != null && iso < min
           return (
             <button
               key={iso}
               type="button"
               aria-label={`${cell.y}年${cell.m}月${cell.d}日`}
               aria-pressed={selected}
-              disabled={beyondMax}
+              disabled={beyondMax || beforeMin}
               onClick={() => onPick(iso)}
               className={cn(
                 'flex h-8 w-8 justify-self-center items-center justify-center rounded-sm font-mono text-sm text-fg transition-colors hover:bg-surface-hover disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent',
@@ -144,7 +150,7 @@ export function CalendarPanel({
             <button
               type="button"
               onClick={() => onPick(today)}
-              disabled={max != null && today > max}
+              disabled={(max != null && today > max) || (min != null && today < min)}
               className={cn(
                 PANEL_BTN_CLASS,
                 'disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent',
@@ -174,6 +180,7 @@ export function DatePicker({
   className,
   clearable = true,
   max,
+  min,
   'aria-label': ariaLabel,
 }: DatePickerProps) {
   const [open, setOpen] = useState(false)
@@ -204,6 +211,7 @@ export function DatePicker({
           <CalendarPanel
             value={value}
             max={max}
+            min={min}
             onPick={(v) => {
               onChange(v)
               setOpen(false) // 选定即收起（DateTimePicker 场景不收起，由其自行组装）

@@ -90,6 +90,44 @@ describe('DatePicker 封装', () => {
     expect(screen.getByRole('button', { name: '今天' })).toBeEnabled()
   })
 
+  it('min 之前的日期禁用、min 当日可选', () => {
+    render(<DatePicker value="2026-08-19" onChange={() => {}} min="2026-08-19" />)
+    openPanel(/2026-08-19/)
+    expect(screen.getByRole('button', { name: '2026年8月18日' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: '2026年8月1日' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: '2026年8月19日' })).toBeEnabled()
+    expect(screen.getByRole('button', { name: '2026年8月20日' })).toBeEnabled()
+  })
+
+  it('min 与 max 同时存在时只有区间内可选', () => {
+    render(
+      <DatePicker value="2026-08-19" onChange={() => {}} min="2026-08-10" max="2026-08-20" />,
+    )
+    openPanel(/2026-08-19/)
+    expect(screen.getByRole('button', { name: '2026年8月9日' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: '2026年8月21日' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: '2026年8月10日' })).toBeEnabled()
+    expect(screen.getByRole('button', { name: '2026年8月20日' })).toBeEnabled()
+  })
+
+  it('「今天」快捷按钮同样受 min 约束：min 晚于今天时禁用，早于今天时可用', () => {
+    const { unmount } = render(<DatePicker value="" onChange={() => {}} min="2999-12-31" />)
+    openPanel('选择日期')
+    expect(screen.getByRole('button', { name: '今天' })).toBeDisabled()
+    unmount()
+    render(<DatePicker value="" onChange={() => {}} min="2020-01-01" />)
+    openPanel('选择日期')
+    expect(screen.getByRole('button', { name: '今天' })).toBeEnabled()
+  })
+
+  it('min 早于当前展示月时，可翻到 min 之前的月份但日期仍禁用', () => {
+    render(<DatePicker value="2026-08-19" onChange={() => {}} min="2026-08-15" />)
+    openPanel(/2026-08-19/)
+    fireEvent.click(screen.getByRole('button', { name: '上个月' }))
+    expect(screen.getByText('2026年7月')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: '2026年7月31日' })).toBeDisabled()
+  })
+
   it('disabled 触发器不可打开弹层', () => {
     render(<DatePicker value="2026-08-19" onChange={() => {}} disabled />)
     const trigger = screen.getByRole('button', { name: /2026-08-19/ })
